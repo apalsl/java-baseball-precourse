@@ -1,9 +1,14 @@
 package baseball.model;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BallTest {
@@ -33,5 +38,17 @@ class BallTest {
         assertThatThrownBy(() -> new Ball(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("숫자를 입력하세요.");
+    }
+
+    @Test
+    @DisplayName("입력한 값이 IntegerList로 저장됐는지 확인")
+    void getBall_isIntegerList() {
+        Ball ball = new Ball("159");
+        List<Integer> integers = ball.getBall();
+
+        assertThat(integers.size()).isEqualTo(3);
+        assertThat(integers.get(0)).isEqualTo(1);
+        assertThat(integers.get(1)).isEqualTo(5);
+        assertThat(integers.get(2)).isEqualTo(9);
     }
 }

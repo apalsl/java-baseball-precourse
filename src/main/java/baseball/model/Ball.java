@@ -1,11 +1,13 @@
 package baseball.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Ball {
-    private static final int MATCH_LENGTH = 3;
+    private static final int BALL_LENGTH = 3;
 
-    private String ball;
+    private List<Integer> ball;
 
     public Ball(String ball) {
         if (isBlank(ball)) {
@@ -17,7 +19,16 @@ public class Ball {
         if (isNotNumber(ball)) {
             throw new IllegalArgumentException("숫자를 입력하세요.");
         }
-        this.ball = ball;
+
+        this.ball = parseIntegerList(ball);
+    }
+
+    private List<Integer> parseIntegerList(String ball) {
+        List<Integer> ballNumbers = new ArrayList<>(BALL_LENGTH);
+        for (int index = 0; index < BALL_LENGTH; index++) {
+            ballNumbers.add(Character.getNumericValue(ball.charAt(index)));
+        }
+        return ballNumbers;
     }
 
     private boolean isBlank(String ball) {
@@ -25,10 +36,14 @@ public class Ball {
     }
 
     private boolean isNotMatchSize(String ball) {
-        return ball.length() != MATCH_LENGTH;
+        return ball.length() != BALL_LENGTH;
     }
 
     private boolean isNotNumber(String ball) {
         return !ball.matches("[+-]?\\d*(\\.\\d+)?");
+    }
+
+    public List<Integer> getBall() {
+        return this.ball;
     }
 }
