@@ -13,12 +13,10 @@ public class MissionUtilsTest {
     @Test
     @DisplayName("미션유틸의 랜덤숫자 생성 동작 테스트")
     void pickNumberInRangeTest() {
-        int count = 3;
-        List<Integer> integers = Randoms.pickUniqueNumbersInRange(1, 9, count);
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-        assertThat(integers.size()).isEqualTo(count);
-        assertThat(integers).doesNotContain(0,10);
-        assertThat(integers).doesNotHaveDuplicates();
+        assertThat(randomNumber).isLessThan(10);
+        assertThat(randomNumber).isGreaterThan(0);
     }
 
 }
