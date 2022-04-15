@@ -16,11 +16,11 @@ public class StrikeZon {
     }
 
     public static StrikeZon createStrikeZon() {
-        List<Integer> strikeZon = new ArrayList<>(STRIKE_ZON_SIZE);
-        for(int count = 0; count < STRIKE_ZON_SIZE; count++) {
+        Set<Integer> strikeZon = new HashSet<>();
+        while (strikeZon.size() < STRIKE_ZON_SIZE) {
             strikeZon.add(Randoms.pickNumberInRange(STRIKE_ZON_START, STRIKE_ZON_END));
         }
-        return new StrikeZon(strikeZon);
+        return new StrikeZon(new ArrayList<>(strikeZon));
     }
 
     public List<Integer> getStrikeZon() {
