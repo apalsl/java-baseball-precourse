@@ -20,6 +20,10 @@ public class StrikeZon {
         while (strikeZon.size() < STRIKE_ZON_SIZE) {
             strikeZon.add(Randoms.pickNumberInRange(STRIKE_ZON_START, STRIKE_ZON_END));
         }
+
+        for (Integer integer : strikeZon) {
+            System.out.println(integer);
+        }
         return new StrikeZon(new ArrayList<>(strikeZon));
     }
 
