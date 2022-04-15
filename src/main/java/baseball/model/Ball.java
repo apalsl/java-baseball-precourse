@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Ball {
-    private static final int BALL_LENGTH = 3;
 
     private List<Integer> ball;
 
@@ -24,8 +23,8 @@ public class Ball {
     }
 
     private List<Integer> parseIntegerList(String ball) {
-        List<Integer> ballNumbers = new ArrayList<>(BALL_LENGTH);
-        for (int index = 0; index < BALL_LENGTH; index++) {
+        List<Integer> ballNumbers = new ArrayList<>(BaseballConstants.BALL_LENGTH);
+        for (int index = 0; index < BaseballConstants.BALL_LENGTH; index++) {
             ballNumbers.add(Character.getNumericValue(ball.charAt(index)));
         }
         return ballNumbers;
@@ -36,7 +35,7 @@ public class Ball {
     }
 
     private boolean isNotMatchSize(String ball) {
-        return ball.length() != BALL_LENGTH;
+        return ball.length() != BaseballConstants.BALL_LENGTH;
     }
 
     private boolean isNotNumber(String ball) {
